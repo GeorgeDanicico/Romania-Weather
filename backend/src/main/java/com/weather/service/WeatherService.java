@@ -21,7 +21,7 @@ public class WeatherService {
     @ConfigProperty(name = "weather.cities")
     List<String> cities;
 
-    public CountryWeatherResponse getColdestAndHottestWeather(String city) {
+    public CountryWeatherResponse getColdestAndHottestWeather() {
         var sortedWeathers = cities.stream()
                 .map(this::getWeatherForCity)
                 .sorted()
