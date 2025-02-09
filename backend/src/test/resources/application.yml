@@ -1,0 +1,5 @@
+test:
+  weather:
+    cities:
+      - "City1"
+      - "City2"
