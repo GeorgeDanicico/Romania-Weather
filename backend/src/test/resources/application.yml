@@ -1,5 +1,5 @@
-test:
-  weather:
-    cities:
-      - "City1"
-      - "City2"
+weather:
+  api-key:
+  cities:
+    - "City1"
+    - "City2"
