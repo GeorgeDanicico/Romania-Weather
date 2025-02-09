@@ -29,4 +29,4 @@ export interface WeatherResponse {
 export interface WeatherData {
   hottest: WeatherResponse;
   coldest: WeatherResponse;
-} 
+}

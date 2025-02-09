@@ -1,4 +1,4 @@
-export const themeConfig = {
+export const themeConfig: any = {
   light: {
     hotCard: {
       background: 'bg-red-50',
