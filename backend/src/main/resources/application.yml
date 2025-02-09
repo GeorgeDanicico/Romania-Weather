@@ -4,16 +4,31 @@ quarkus:
   cache:
     enabled: true
     caffeine:
+        expire-after-write: 30m
         maximum-size: 50
-        expire-after-write: 1m
   http:
+    access-log:
+      enabled: true
+      log-to-file: true
+      base-file-name: application-access
+      log-directory: target
+
     cors:
       ~: true
       origins: "*"
     root-path: /api
+    record-request-start-time: true
+  log:
+    file:
+      enable: true
+      path: "./target/application-server.log"
+      format: "%d{yyyy-MM-dd HH:mm:ss} %-5p [%c] (%t) %s%e%n"
+      rotation:
+        file-suffix: .yyyy-MM-dd
+        max-file-size: 1M
   rest-client:
-    connect-timeout: 3000
-    read-timeout: 3000
+    connect-timeout: 5000
+    read-timeout: 5000
     weather:
       url: https://api.weatherapi.com
 
