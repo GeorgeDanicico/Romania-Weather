@@ -1,0 +1,62 @@
+quarkus:
+  banner:
+    enabled: false
+  cache:
+    enabled: true
+    caffeine:
+        maximum-size: 50
+        expire-after-write: 1m
+  http:
+    cors:
+      ~: true
+      origins: "*"
+    root-path: /api
+  rest-client:
+    connect-timeout: 3000
+    read-timeout: 3000
+    weather:
+      url: https://api.weatherapi.com
+
+weather:
+  api-key: ${WEATHER_API_KEY}
+  cities:
+    - "Alba Iulia"
+    - "Arad"
+    - "Pitesti"
+    - "Bacau"
+    - "Oradea"
+    - "Bistrita"
+    - "Botosani"
+    - "Brasov"
+    - "Braila"
+    - "Buzau"
+    - "Resita"
+    - "Calarasi"
+    - "Cluj-Napoca"
+    - "Constanta"
+    - "Covasna"
+    - "Targoviste"
+    - "Craiova"
+    - "Galati"
+    - "Giurgiu"
+    - "Targu Jiu"
+    - "Miercurea Ciuc"
+    - "Deva"
+    - "Slobozia"
+    - "Iasi"
+    - "Baia Mare"
+    - "Drobeta-Turnu Severin"
+    - "Targu Mures"
+    - "Piatra Neamt"
+    - "Slatina"
+    - "Ploiesti"
+    - "Satu Mare"
+    - "Zalau"
+    - "Sibiu"
+    - "Suceava"
+    - "Timisoara"
+    - "Tulcea"
+    - "Ramnicu Valcea"
+    - "Vaslui"
+    - "Focsani"
+    - "Bucuresti"
