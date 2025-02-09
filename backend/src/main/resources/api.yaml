@@ -1,0 +1,84 @@
+---
+openapi: 3.1.0
+components:
+  schemas:
+    CountryWeatherResponse:
+      type: object
+      properties:
+        coldest:
+          $ref: "#/components/schemas/WeatherResponse"
+        hottest:
+          $ref: "#/components/schemas/WeatherResponse"
+    Location:
+      type: object
+      properties:
+        name:
+          type: string
+        region:
+          type: string
+        country:
+          type: string
+        lat:
+          type: number
+          format: double
+        lon:
+          type: number
+          format: double
+        tzId:
+          type: string
+        localtimeEpoch:
+          type: integer
+          format: int64
+        localdate:
+          type: string
+    WeatherInformation:
+      type: object
+      properties:
+        lastUpdatedEpoch:
+          type: integer
+          format: int64
+        lastUpdated:
+          type: string
+        temperature:
+          type: number
+          format: double
+        isDay:
+          type: boolean
+        precipitationMm:
+          type: number
+          format: double
+        humidity:
+          type: integer
+          format: int32
+        cloud:
+          type: integer
+          format: int32
+        feelsLikeTemperature:
+          type: number
+          format: double
+        uvIndex:
+          type: number
+          format: double
+    WeatherResponse:
+      type: object
+      properties:
+        location:
+          $ref: "#/components/schemas/Location"
+        current:
+          $ref: "#/components/schemas/WeatherInformation"
+paths:
+  /api/weather:
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CountryWeatherResponse"
+      summary: Get Weather
+      tags:
+        - Weather Resource
+info:
+  title: application API
+  version: 1.0.0-SNAPSHOT

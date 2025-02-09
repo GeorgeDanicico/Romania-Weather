@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "@heroui/button";
+import { Spinner } from "@heroui/spinner";
 
 import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
 import { WeatherData } from "@/types/weather";
@@ -22,8 +23,9 @@ export default function Home() {
         const data: WeatherData = await response.json();
 
         setWeatherData(data);
-        setLoading(false);
       } catch (error) {
+        console.error("Failed to fetch weather data:", error);
+      } finally {
         setLoading(false);
       }
     };
@@ -37,14 +39,20 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center">
-        <p>Loading weather data...</p>
+      <div className="flex min-h-screen flex-col items-center justify-center space-y-4">
+        <Spinner color="primary" size="lg" />
+        <p className={title({ color: "blue", size: "sm" })}>
+          Fetching weather data...
+        </p>
+        <p className="text-gray-500 text-sm animate-pulse">
+          Please wait while we gather the latest information
+        </p>
       </div>
     );
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-12">
+    <main className="flex flex-col items-center justify-center p-12">
       <div className="absolute top-4 right-4">
         <Button
           aria-label="Toggle theme"
@@ -64,7 +72,7 @@ export default function Home() {
         Romania Temperature Extremes
       </h1>
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 mt-8">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 mt-20">
         {weatherData && (
           <>
             <WeatherCard data={weatherData.hottest} type={"hottest"} />

@@ -14,7 +14,7 @@ export const title = tv({
     },
     orientation: {
       top: "absolute top-4 left-1/2 transform -translate-x-1/2",
-    }, 
+    },
     size: {
       sm: "text-3xl lg:text-4xl",
       md: "text-[2.3rem] lg:text-5xl leading-9",
